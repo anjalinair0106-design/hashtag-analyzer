@@ -22,4 +22,4 @@ A modern web app that analyzes hashtags and provides insights like popularity, r
 
 ---
 
-## 📂 Project Structure
+
