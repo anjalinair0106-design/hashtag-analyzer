@@ -1,34 +1,79 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hashtag Analyzer</title>
-
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-
 <body>
+    <main class="page-shell">
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">Social Discovery Toolkit</p>
+                <h1>Hashtag Analyzer</h1>
+                <p class="hero-text">
+                    Check hashtag momentum, browse related ideas, and jump into trending tags with a cleaner, faster workflow.
+                </p>
+            </div>
+            <div class="hero-badge">Live Trend Preview</div>
+        </section>
 
-<div class="container">
+        <section class="dashboard">
+            <div class="panel panel-primary">
+                <div class="panel-header">
+                    <div>
+                        <p class="section-label">Analyze</p>
+                        <h2>Enter a hashtag</h2>
+                    </div>
+                    <p class="panel-note">Try tags like <span>#tech</span> or <span>#fashion</span></p>
+                </div>
 
-<h1>📊 Hashtag Analyzer</h1>
+                <div class="search-row">
+                    <input type="text" id="hashtag" placeholder="#example" autocomplete="off">
+                    <button id="analyzeButton" type="button" onclick="analyze()">Analyze</button>
+                </div>
 
-<input type="text" id="hashtag" placeholder="#example">
-<button onclick="analyze()">Analyze</button>
+                <div class="score-card">
+                    <p class="section-label">Popularity Score</p>
+                    <div class="score-value" id="score">--</div>
+                    <p class="score-caption" id="scoreCaption">Run an analysis to see the current popularity estimate.</p>
+                </div>
 
-<h2>🔥 Popularity Score: <span id="score"></span></h2>
+                <div class="panel-block">
+                    <div class="block-header">
+                        <h3>Related Hashtags</h3>
+                        <p>Copy suggestions with one click.</p>
+                    </div>
+                    <ul id="related" class="chip-list empty-state">
+                        <li>Suggested hashtags will appear here.</li>
+                    </ul>
+                </div>
+            </div>
 
-<h3>🔗 Related Hashtags:</h3>
-<ul id="related"></ul>
+            <div class="panel panel-chart">
+                <div class="block-header">
+                    <h3>7-Day Trend</h3>
+                    <p>Weekly visibility snapshot.</p>
+                </div>
+                <div class="chart-wrap">
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
 
-<canvas id="trendChart" width="400" height="200"></canvas>
-<h3>📌 Top Trending Hashtags</h3>
-<ul id="trendingList"></ul>
+            <div class="panel panel-side">
+                <div class="block-header">
+                    <h3>Top Trending Hashtags</h3>
+                    <p>Tap any tag to analyze it instantly.</p>
+                </div>
+                <ul id="trendingList" class="trending-list">
+                    <li>Loading trending hashtags...</li>
+                </ul>
+            </div>
+        </section>
+    </main>
 
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="{{ url_for('static', filename='script.js') }}"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
