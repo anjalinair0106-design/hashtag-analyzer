@@ -1,9 +1,16 @@
+import os
+from dotenv import load_dotenv
 from flask import Flask, render_template, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
+load_dotenv()
+
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///hashtags.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get(
+    "DATABASE_URL", "sqlite:///hashtags.db"
+)
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config["DEBUG"] = os.environ.get("FLASK_DEBUG", "True").lower() == "true"
 
 db = SQLAlchemy(app)
 
