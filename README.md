@@ -33,6 +33,7 @@ hashtag-analyzer/
 ├── app.py
 ├── requirements.txt
 ├── README.md
+├── instance/
 ├── templates/
 │   └── index.html
 ├── static/
@@ -57,7 +58,7 @@ hashtag-analyzer/
 ### Installation
 
 ```bash
-cd c:/Users/Anjali/OneDrive/Desktop/hashtag-analyzer
+cd path/to/hashtag-analyzer
 python -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
